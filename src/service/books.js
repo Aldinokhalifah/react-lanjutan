@@ -14,3 +14,32 @@ export const createBook = async (data) => {
         throw error;
     }
 } 
+
+export const showBook = async (id) => {
+    try {
+        const { data } = await API.get(`/book/${id}`);
+        return data.data
+    } catch (error) {
+        console.error(error);
+        throw error
+    }
+}
+
+export const updateBook = async (id, data) => {
+    try {
+        const response = await API.post(`/book/${id}`, data);
+        return response.data
+    } catch (error) {
+        console.error(error);
+        throw error
+    }
+}
+
+export const deleteBook = async (id) => {
+    try {
+        await API.delete(`/book/${id}`);
+    } catch (error) {
+        console.error(error);
+        throw error
+    }
+}

@@ -14,3 +14,32 @@ export const createGenre = async (data) => {
         throw error;
     }
 }
+
+export const showGenre = async (id) => {
+    try {
+        const { data } = await API.get(`/genre/${id}`);
+        return data.data
+    } catch (error) {
+        console.error(error);
+        throw error
+    }
+}
+
+export const updateGenre = async (id, data) => {
+    try {
+        const response = await API.post(`/genre/${id}`, data);
+        return response.data
+    } catch (error) {
+        console.error(error);
+        throw error
+    }
+}
+
+export const deleteGenre = async (id) => {
+    try {
+        await API.delete(`/genre/${id}`);
+    } catch (error) {
+        console.error(error);
+        throw error
+    }
+}
